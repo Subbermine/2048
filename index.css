@@ -1,0 +1,32 @@
+#container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    border: 5px solid black;
+    background-color: blue;
+    padding: 10px;
+}
+.element{
+    margin-top: 10px;
+    height: 80px;
+    width: 80px;
+    background-color: green;
+    border: 1px solid black;
+    flex-basis: 23%;
+    text-align: center;
+    line-height: 80px;
+}
+input{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+#text{
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+}

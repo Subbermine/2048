@@ -24,11 +24,11 @@ var colour = {
   16: "pink",
   32: "violet",
   64: "purple",
-  128: "",
-  256: "",
-  512: "",
-  1024: "",
-  2048: "",
+  128: "aqua",
+  256: "brown",
+  512: "chocolate",
+  1024: "magenta",
+  2048: "grey",
   4096: "",
 };
 var turn_counter = 0;
@@ -42,23 +42,18 @@ function random_generator() {
   cell[randid] = 2;
   document.getElementById(randid).innerHTML = 2;
   document.getElementById(randid).style.backgroundColor = "orange";
-  document.getElementById("header").innerHTML = "Score:" + score;
+  document.getElementById("header").innerHTML = `Score:${score}`;
 }
 function move(event) {
   let key = event.key;
-
   if (key == "ArrowDown") {
-    down();
-    random_generator();
+    downpossible();
   } else if (key == "ArrowUp") {
-    up();
-    random_generator();
+    uppossible();
   } else if (key == "ArrowLeft") {
-    left();
-    random_generator();
+    leftpossible();
   } else if (key == "ArrowRight") {
-    right();
-    random_generator();
+    rightpossible();
   }
   turn_counter++;
 }
@@ -87,7 +82,6 @@ function down() {
       }
     }
   }
-  document.getElementById("header").innerHTML = "Score:" + score;
 }
 function up() {
   for (let row = 3; row > 0; row--) {
@@ -114,7 +108,6 @@ function up() {
       }
     }
   }
-  document.getElementById("header").innerHTML = "Score:" + score;
 }
 function left() {
   for (let col = 3; col > 0; col--) {
@@ -141,7 +134,6 @@ function left() {
       }
     }
   }
-  document.getElementById("header").innerHTML = "Score:" + score;
 }
 function right() {
   for (let col = 0; col < 3; col++) {
@@ -168,5 +160,42 @@ function right() {
       }
     }
   }
-  document.getElementById("header").innerHTML = "Score:" + score;
 }
+function gameover() {
+  document.getElementById("inputbox").disabled = true;
+}
+function downpossible() {
+  if (isfull()) {
+    random_generator();
+    down();
+  } else gameover();
+}
+function leftpossible() {
+  if (isfull()) {
+    random_generator();
+    left();
+  } else gameover();
+}
+function rightpossible() {
+  if (isfull()) {
+    random_generator();
+    right();
+  } else gameover();
+}
+function uppossible() {
+  if (isfull()) {
+    random_generator();
+    up();
+  } else gameover();
+}
+function isfull() {
+  let a = 0;
+  for (let z = 0; z < 16; z++) {
+    if (cell[z] != null) {
+      a++;
+    }
+  }
+  if (a == 16) return false;
+  else return true;
+}
+// Side checker incomplete

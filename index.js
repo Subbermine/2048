@@ -42,7 +42,7 @@ function random_generator() {
   cell[randid] = 2;
   document.getElementById(randid).innerHTML = 2;
   document.getElementById(randid).style.backgroundColor = "orange";
-  document.getElementById("header").innerHTML = /*`Score:${score}`*/ cell;
+  document.getElementById("header").innerHTML = `Score:${score}`;
 }
 function move(event) {
   let key = event.key;
@@ -136,31 +136,6 @@ function up() {
       }
     }
   }
-
-  // for (let row = 3; row > 0; row--) {
-  //   for (let col = 3; col >= 0; col--) {
-  //     let id = 4 * row + col;
-  //     if (cell[id] != null && cell[id - 4] == null) {
-  //       cell[id - 4] = cell[id];
-  //       document.getElementById(id - 4).innerHTML = cell[id - 4];
-  //       document.getElementById(id - 4).style.backgroundColor =
-  //         colour[cell[id - 4]];
-  //       document.getElementById(id).innerHTML = "";
-  //       document.getElementById(id).style.backgroundColor = "green";
-  //       cell[id] = null;
-  //     }
-  //     if (cell[id] == cell[id - 4] && cell[id] != null) {
-  //       document.getElementById(id - 4).innerHTML = cell[id - 4] + cell[id];
-  //       document.getElementById(id - 4).style.backgroundColor =
-  //         colour[cell[id - 4] + cell[id]];
-  //       score += cell[id - 4] + cell[id];
-  //       cell[id - 4] = cell[id - 4] + cell[id];
-  //       cell[id] = null;
-  //       document.getElementById(id).innerHTML = "";
-  //       document.getElementById(id).style.backgroundColor = "green";
-  //     }
-  //   }
-  // }
 }
 function left() {
   for (let col = 3; col > 0; col--) {

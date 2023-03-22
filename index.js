@@ -124,6 +124,12 @@ function up() {
         document.getElementById(id + 12).style.backgroundColor = "green";
         cell[id + 12] = null;
       }
+    }
+  }
+
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col <= 3; col++) {
+      let id = 4 * row + col;
       if (cell[id] == cell[id + 4] && cell[id + 4] != null) {
         document.getElementById(id).innerHTML = cell[id + 4] + cell[id];
         document.getElementById(id).style.backgroundColor =
@@ -133,6 +139,33 @@ function up() {
         cell[id + 4] = null;
         document.getElementById(id + 4).innerHTML = "";
         document.getElementById(id + 4).style.backgroundColor = "green";
+      }
+    }
+  }
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col <= 3; col++) {
+      let id = 4 * row + col;
+      if (cell[id] == null && cell[id + 4] != null) {
+        cell[id] = cell[id + 4];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 4).innerHTML = "";
+        document.getElementById(id + 4).style.backgroundColor = "green";
+        cell[id + 4] = null;
+      } else if (cell[id] == null && cell[id + 8] != null /* && check < 1*/) {
+        cell[id] = cell[id + 8];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 8).innerHTML = "";
+        document.getElementById(id + 8).style.backgroundColor = "green";
+        cell[id + 8] = null;
+      } else if (cell[id] == null && cell[id + 12] != null /* && check < 2*/) {
+        cell[id] = cell[id + 12];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 12).innerHTML = "";
+        document.getElementById(id + 12).style.backgroundColor = "green";
+        cell[id + 12] = null;
       }
     }
   }
@@ -194,26 +227,26 @@ function gameover() {
 }
 function downpossible() {
   if (isfull()) {
-    random_generator();
     down();
+    random_generator();
   } else gameover();
 }
 function leftpossible() {
   if (isfull()) {
-    random_generator();
     left();
+    random_generator();
   } else gameover();
 }
 function rightpossible() {
   if (isfull()) {
-    random_generator();
     right();
+    random_generator();
   } else gameover();
 }
 function uppossible() {
   if (isfull()) {
-    random_generator();
     up();
+    random_generator();
   } else gameover();
 }
 function isfull() {

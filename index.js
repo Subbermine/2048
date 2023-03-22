@@ -58,27 +58,41 @@ function move(event) {
   turn_counter++;
 }
 function down() {
-  for (let row = 0; row < 3; row++) {
-    for (let col = 0; col <= 3; col++) {
+  let check = 0;
+  for (let row = 3; row > 0; row--, check++) {
+    for (let col = 3; col >= 0; col--) {
       let id = 4 * row + col;
-      if (cell[id] != null && cell[id + 4] == null) {
-        cell[id + 4] = cell[id];
-        document.getElementById(id + 4).innerHTML = cell[id + 4];
-        document.getElementById(id + 4).style.backgroundColor =
-          colour[cell[id + 4]];
-        document.getElementById(id).innerHTML = "";
-        document.getElementById(id).style.backgroundColor = "green";
-        cell[id] = null;
+      if (cell[id] == null && cell[id - 4] != null) {
+        cell[id] = cell[id - 4];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id - 4).innerHTML = "";
+        document.getElementById(id - 4).style.backgroundColor = "green";
+        cell[id - 4] = null;
+      } else if (cell[id] == null && cell[id - 8] != null /* && check < 1*/) {
+        cell[id] = cell[id - 8];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id - 8).innerHTML = "";
+        document.getElementById(id - 8).style.backgroundColor = "green";
+        cell[id - 8] = null;
+      } else if (cell[id] == null && cell[id - 12] != null /* && check < 2*/) {
+        cell[id] = cell[id - 12];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id - 12).innerHTML = "";
+        document.getElementById(id - 12).style.backgroundColor = "green";
+        cell[id - 12] = null;
       }
-      if (cell[id] == cell[id + 4] && cell[id] != null) {
-        document.getElementById(id + 4).innerHTML = cell[id + 4] + cell[id];
-        document.getElementById(id + 4).style.backgroundColor =
-          colour[cell[id + 4] + cell[id]];
-        score += cell[id + 4] + cell[id];
-        cell[id + 4] = cell[id + 4] + cell[id];
-        cell[id] = null;
-        document.getElementById(id).innerHTML = "";
-        document.getElementById(id).style.backgroundColor = "green";
+      if (cell[id] == cell[id - 4] && cell[id - 4] != null) {
+        document.getElementById(id).innerHTML = cell[id - 4] + cell[id];
+        document.getElementById(id).style.backgroundColor =
+          colour[cell[id - 4] + cell[id]];
+        score += cell[id - 4] + cell[id];
+        cell[id] = cell[id - 4] + cell[id];
+        cell[id - 4] = null;
+        document.getElementById(id - 4).innerHTML = "";
+        document.getElementById(id - 4).style.backgroundColor = "green";
       }
     }
   }

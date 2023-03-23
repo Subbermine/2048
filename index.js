@@ -29,7 +29,7 @@ var colour = {
   512: "chocolate",
   1024: "magenta",
   2048: "grey",
-  4096: "",
+  4096: "honeydew",
 };
 var turn_counter = 0;
 function random_generator() {
@@ -42,7 +42,7 @@ function random_generator() {
   cell[randid] = 2;
   document.getElementById(randid).innerHTML = 2;
   document.getElementById(randid).style.backgroundColor = "orange";
-  document.getElementById("header").innerHTML = `Score:${score}`;
+  document.getElementById("header").innerHTML = `Score: ${score}`;
 }
 function move(event) {
   let key = event.key;
@@ -67,21 +67,21 @@ function down() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 4).innerHTML = "";
-        document.getElementById(id - 4).style.backgroundColor = "green";
+        document.getElementById(id - 4).style.backgroundColor = "#38E54D";
         cell[id - 4] = null;
       } else if (cell[id] == null && cell[id - 8] != null) {
         cell[id] = cell[id - 8];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 8).innerHTML = "";
-        document.getElementById(id - 8).style.backgroundColor = "green";
+        document.getElementById(id - 8).style.backgroundColor = "#38E54D";
         cell[id - 8] = null;
       } else if (cell[id] == null && cell[id - 12] != null) {
         cell[id] = cell[id - 12];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 12).innerHTML = "";
-        document.getElementById(id - 12).style.backgroundColor = "green";
+        document.getElementById(id - 12).style.backgroundColor = "#38E54D";
         cell[id - 12] = null;
       }
     }
@@ -97,7 +97,7 @@ function down() {
         cell[id] = cell[id - 4] + cell[id];
         cell[id - 4] = null;
         document.getElementById(id - 4).innerHTML = "";
-        document.getElementById(id - 4).style.backgroundColor = "green";
+        document.getElementById(id - 4).style.backgroundColor = "#38E54D";
       }
     }
   }
@@ -109,21 +109,21 @@ function down() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 4).innerHTML = "";
-        document.getElementById(id - 4).style.backgroundColor = "green";
+        document.getElementById(id - 4).style.backgroundColor = "#38E54D";
         cell[id - 4] = null;
       } else if (cell[id] == null && cell[id - 8] != null) {
         cell[id] = cell[id - 8];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 8).innerHTML = "";
-        document.getElementById(id - 8).style.backgroundColor = "green";
+        document.getElementById(id - 8).style.backgroundColor = "#38E54D";
         cell[id - 8] = null;
       } else if (cell[id] == null && cell[id - 12] != null) {
         cell[id] = cell[id - 12];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id - 12).innerHTML = "";
-        document.getElementById(id - 12).style.backgroundColor = "green";
+        document.getElementById(id - 12).style.backgroundColor = "#38E54D";
         cell[id - 12] = null;
       }
     }
@@ -139,21 +139,21 @@ function up() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 4).innerHTML = "";
-        document.getElementById(id + 4).style.backgroundColor = "green";
+        document.getElementById(id + 4).style.backgroundColor = "#38E54D";
         cell[id + 4] = null;
       } else if (cell[id] == null && cell[id + 8] != null /* && check < 1*/) {
         cell[id] = cell[id + 8];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 8).innerHTML = "";
-        document.getElementById(id + 8).style.backgroundColor = "green";
+        document.getElementById(id + 8).style.backgroundColor = "#38E54D";
         cell[id + 8] = null;
       } else if (cell[id] == null && cell[id + 12] != null /* && check < 2*/) {
         cell[id] = cell[id + 12];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 12).innerHTML = "";
-        document.getElementById(id + 12).style.backgroundColor = "green";
+        document.getElementById(id + 12).style.backgroundColor = "#38E54D";
         cell[id + 12] = null;
       }
     }
@@ -170,7 +170,7 @@ function up() {
         cell[id] = cell[id + 4] + cell[id];
         cell[id + 4] = null;
         document.getElementById(id + 4).innerHTML = "";
-        document.getElementById(id + 4).style.backgroundColor = "green";
+        document.getElementById(id + 4).style.backgroundColor = "#38E54D";
       }
     }
   }
@@ -182,21 +182,21 @@ function up() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 4).innerHTML = "";
-        document.getElementById(id + 4).style.backgroundColor = "green";
+        document.getElementById(id + 4).style.backgroundColor = "#38E54D";
         cell[id + 4] = null;
       } else if (cell[id] == null && cell[id + 8] != null /* && check < 1*/) {
         cell[id] = cell[id + 8];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 8).innerHTML = "";
-        document.getElementById(id + 8).style.backgroundColor = "green";
+        document.getElementById(id + 8).style.backgroundColor = "#38E54D";
         cell[id + 8] = null;
       } else if (cell[id] == null && cell[id + 12] != null /* && check < 2*/) {
         cell[id] = cell[id + 12];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 12).innerHTML = "";
-        document.getElementById(id + 12).style.backgroundColor = "green";
+        document.getElementById(id + 12).style.backgroundColor = "#38E54D";
         cell[id + 12] = null;
       }
     }
@@ -212,21 +212,21 @@ function left() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 1).innerHTML = "";
-        document.getElementById(id + 1).style.backgroundColor = "green";
+        document.getElementById(id + 1).style.backgroundColor = "#38E54D";
         cell[id + 1] = null;
       } else if (cell[id] == null && cell[id + 2] != null && check <= 1) {
         cell[id] = cell[id + 2];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 2).innerHTML = "";
-        document.getElementById(id + 2).style.backgroundColor = "green";
+        document.getElementById(id + 2).style.backgroundColor = "#38E54D";
         cell[id + 2] = null;
       } else if (cell[id] == null && cell[id + 3] != null && check < 1) {
         cell[id] = cell[id + 3];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 3).innerHTML = "";
-        document.getElementById(id + 3).style.backgroundColor = "green";
+        document.getElementById(id + 3).style.backgroundColor = "#38E54D";
         cell[id + 3] = null;
       }
     }
@@ -242,7 +242,7 @@ function left() {
         cell[id] += cell[id + 1];
         cell[id + 1] = null;
         document.getElementById(id + 1).innerHTML = "";
-        document.getElementById(id + 1).style.backgroundColor = "green";
+        document.getElementById(id + 1).style.backgroundColor = "#38E54D";
       }
     }
   }
@@ -254,21 +254,21 @@ function left() {
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 1).innerHTML = "";
-        document.getElementById(id + 1).style.backgroundColor = "green";
+        document.getElementById(id + 1).style.backgroundColor = "#38E54D";
         cell[id + 1] = null;
       } else if (cell[id] == null && cell[id + 2] != null && check <= 1) {
         cell[id] = cell[id + 2];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 2).innerHTML = "";
-        document.getElementById(id + 2).style.backgroundColor = "green";
+        document.getElementById(id + 2).style.backgroundColor = "#38E54D";
         cell[id + 2] = null;
       } else if (cell[id] == null && cell[id + 3] != null && check < 1) {
         cell[id] = cell[id + 3];
         document.getElementById(id).innerHTML = cell[id];
         document.getElementById(id).style.backgroundColor = colour[cell[id]];
         document.getElementById(id + 3).innerHTML = "";
-        document.getElementById(id + 3).style.backgroundColor = "green";
+        document.getElementById(id + 3).style.backgroundColor = "#38E54D";
         cell[id + 3] = null;
       }
     }
@@ -285,7 +285,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 1]];
         document.getElementById(id - 1).innerHTML = "";
-        document.getElementById(id - 1).style.backgroundColor = "green";
+        document.getElementById(id - 1).style.backgroundColor = "#38E54D";
         cell[id - 1] = null;
       } else if (cell[id] == null && cell[id - 2] != null && check <= 1) {
         cell[id] = cell[id - 2];
@@ -293,7 +293,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 2]];
         document.getElementById(id - 2).innerHTML = "";
-        document.getElementById(id - 2).style.backgroundColor = "green";
+        document.getElementById(id - 2).style.backgroundColor = "#38E54D";
         cell[id - 2] = null;
       } else if (cell[id] == null && cell[id - 3] != null && check < 1) {
         cell[id] = cell[id - 3];
@@ -301,7 +301,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 3]];
         document.getElementById(id - 3).innerHTML = "";
-        document.getElementById(id - 3).style.backgroundColor = "green";
+        document.getElementById(id - 3).style.backgroundColor = "#38E54D";
         cell[id - 3] = null;
       }
     }
@@ -318,7 +318,7 @@ function right() {
         cell[id] += cell[id - 1];
         cell[id - 1] = null;
         document.getElementById(id - 1).innerHTML = "";
-        document.getElementById(id - 1).style.backgroundColor = "green";
+        document.getElementById(id - 1).style.backgroundColor = "#38E54D";
       }
     }
   }
@@ -332,7 +332,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 1]];
         document.getElementById(id - 1).innerHTML = "";
-        document.getElementById(id - 1).style.backgroundColor = "green";
+        document.getElementById(id - 1).style.backgroundColor = "#38E54D";
         cell[id - 1] = null;
       } else if (cell[id] == null && cell[id - 2] != null && check <= 1) {
         cell[id] = cell[id - 2];
@@ -340,7 +340,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 2]];
         document.getElementById(id - 2).innerHTML = "";
-        document.getElementById(id - 2).style.backgroundColor = "green";
+        document.getElementById(id - 2).style.backgroundColor = "#38E54D";
         cell[id - 2] = null;
       } else if (cell[id] == null && cell[id - 3] != null && check < 1) {
         cell[id] = cell[id - 3];
@@ -348,7 +348,7 @@ function right() {
         document.getElementById(id).style.backgroundColor =
           colour[cell[id - 3]];
         document.getElementById(id - 3).innerHTML = "";
-        document.getElementById(id - 3).style.backgroundColor = "green";
+        document.getElementById(id - 3).style.backgroundColor = "#38E54D";
         cell[id - 3] = null;
       }
     }

@@ -37,3 +37,41 @@ input{
     text-align: center;
     margin-top: 20px;
 }
+.container{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    width: 100px;
+    margin-top: 20px;
+}
+button{
+    text-align: center;
+    line-height: 20px;
+    height: 50px;
+    flex-basis: 100%;
+    width: 50px;
+}.middle{
+    flex-basis: 50%;
+}
+/* Mobile */
+@media only screen and (max-width:425px) {
+    #text,#inputbox {
+        visibility: hidden;
+        display: none;
+    }
+    button{
+        visibility: visible;
+    }
+}
+/* Laptop */
+@media only screen and (min-width:425px) {
+    #text,#inputbox {
+        visibility: visible;
+    }
+    button{
+        display: none;
+        visibility: hidden;
+    }
+}

@@ -29,8 +29,10 @@
     </div>
   </body>
   <div class="container">
-    <button>&uarr;</button><button class="middle">&larr;</button
-    ><button class="middle">&rarr;</button><button>&darr;</button>
+    <button onclick="uppossible()">&uarr;</button
+    ><button onclick="leftpossible()" class="middle">&larr;</button
+    ><button class="middle" onclick="rightpossible()">&rarr;</button
+    ><button onclick="downpossible()">&darr;</button>
   </div>
   <p id="text">Please press your cursor in this textbox before playing</p>
   <input id="inputbox" type="text" onkeydown="move(event)" />

@@ -57,6 +57,13 @@ function move(event) {
   }
   turn_counter++;
 }
+function mobile(num) {
+  if (num == 4) downpossible();
+  else if (num == 1) uppossible();
+  else if (num == 2) leftpossible();
+  else if (num == 3) rightpossible();
+  turn_counter++;
+}
 function down() {
   let check = 0;
   for (let row = 3; row > 0; row--, check++) {
@@ -356,6 +363,10 @@ function right() {
 }
 function gameover() {
   document.getElementById("inputbox").disabled = true;
+  document.getElementById("ubox").disabled = true;
+  document.getElementById("dbox").disabled = true;
+  document.getElementById("lbox").disabled = true;
+  document.getElementById("rbox").disabled = true;
   alert("Game over");
 }
 function downpossible() {

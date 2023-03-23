@@ -47,7 +47,7 @@ input{
     margin-top: 20px;
     height: 175px;
 }
-button{
+.butt{
     text-align: center;
     line-height: 20px;
     height: 50px;
@@ -62,28 +62,15 @@ button{
 /* Mobile */
 @media only screen and (max-width:425px) {
     #text,#inputbox {
-        visibility: hidden;
         display: none;
-    }
-    button{
-        visibility: visible;
     }
 }
 /* Laptop */
 @media only screen and (min-width:425px) {
-    #text,#inputbox {
-        visibility: visible;
-    }
-    button{
+    .container{
         display: none;
-        visibility: hidden;
-    }
-    #play{
-        visibility: visible;
-        
     }
 }
-/* add some space between buttons */
 #play{
     display: block;
     margin: auto;

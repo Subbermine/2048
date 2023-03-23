@@ -356,6 +356,7 @@ function right() {
 }
 function gameover() {
   document.getElementById("inputbox").disabled = true;
+  alert("Game over");
 }
 function downpossible() {
   if (isfull()) {

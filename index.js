@@ -203,27 +203,73 @@ function up() {
   }
 }
 function left() {
-  for (let col = 3; col > 0; col--) {
-    for (let row = 3; row >= 0; row--) {
+  let check = 0;
+  for (let col = 0; col < 3; col++, check++) {
+    for (let row = 0; row <= 3; row++) {
       let id = 4 * row + col;
-      if (cell[id] != null && cell[id - 1] == null) {
-        cell[id - 1] = cell[id];
-        document.getElementById(id - 1).innerHTML = cell[id - 1];
-        document.getElementById(id - 1).style.backgroundColor =
-          colour[cell[id - 1]];
-        document.getElementById(id).innerHTML = "";
-        document.getElementById(id).style.backgroundColor = "green";
-        cell[id] = null;
+      if (cell[id] == null && cell[id + 1] != null) {
+        cell[id] = cell[id + 1];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 1).innerHTML = "";
+        document.getElementById(id + 1).style.backgroundColor = "green";
+        cell[id + 1] = null;
+      } else if (cell[id] == null && cell[id + 2] != null && check <= 1) {
+        cell[id] = cell[id + 2];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 2).innerHTML = "";
+        document.getElementById(id + 2).style.backgroundColor = "green";
+        cell[id + 2] = null;
+      } else if (cell[id] == null && cell[id + 3] != null && check < 1) {
+        cell[id] = cell[id + 3];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 3).innerHTML = "";
+        document.getElementById(id + 3).style.backgroundColor = "green";
+        cell[id + 3] = null;
       }
-      if (cell[id] == cell[id - 1] && cell[id] != null) {
-        document.getElementById(id - 1).innerHTML = cell[id - 1] + cell[id];
-        document.getElementById(id - 1).style.backgroundColor =
-          colour[cell[id - 1] + cell[id]];
-        score += cell[id - 1] + cell[id];
-        cell[id - 1] = cell[id - 1] + cell[id];
-        cell[id] = null;
-        document.getElementById(id).innerHTML = "";
-        document.getElementById(id).style.backgroundColor = "green";
+    }
+  }
+  for (let col = 0; col < 3; col++, check++) {
+    for (let row = 0; row <= 3; row++) {
+      let id = 4 * row + col;
+      if (cell[id] == cell[id + 1] && cell[id + 1] != null) {
+        document.getElementById(id).innerHTML = cell[id] + cell[id + 1];
+        document.getElementById(id).style.backgroundColor =
+          colour[cell[id] + cell[id + 1]];
+        score += cell[id + 1] + cell[id];
+        cell[id] += cell[id + 1];
+        cell[id + 1] = null;
+        document.getElementById(id + 1).innerHTML = "";
+        document.getElementById(id + 1).style.backgroundColor = "green";
+      }
+    }
+  }
+  for (let col = 0; col < 3; col++, check++) {
+    for (let row = 0; row <= 3; row++) {
+      let id = 4 * row + col;
+      if (cell[id] == null && cell[id + 1] != null) {
+        cell[id] = cell[id + 1];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 1).innerHTML = "";
+        document.getElementById(id + 1).style.backgroundColor = "green";
+        cell[id + 1] = null;
+      } else if (cell[id] == null && cell[id + 2] != null && check <= 1) {
+        cell[id] = cell[id + 2];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 2).innerHTML = "";
+        document.getElementById(id + 2).style.backgroundColor = "green";
+        cell[id + 2] = null;
+      } else if (cell[id] == null && cell[id + 3] != null && check < 1) {
+        cell[id] = cell[id + 3];
+        document.getElementById(id).innerHTML = cell[id];
+        document.getElementById(id).style.backgroundColor = colour[cell[id]];
+        document.getElementById(id + 3).innerHTML = "";
+        document.getElementById(id + 3).style.backgroundColor = "green";
+        cell[id + 3] = null;
       }
     }
   }

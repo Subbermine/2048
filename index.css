@@ -39,21 +39,25 @@ input{
 }
 .container{
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     display: flex;
     margin: auto;
     flex-wrap: wrap;
     width: 100px;
     margin-top: 20px;
+    height: 175px;
 }
 button{
     text-align: center;
     line-height: 20px;
     height: 50px;
-    flex-basis: 100%;
+    flex-basis: 90%;
     width: 50px;
 }.middle{
-    flex-basis: 50%;
+    flex-basis: 40%;
+}
+#play:hover{
+    background-color: #568e16;
 }
 /* Mobile */
 @media only screen and (max-width:425px) {
@@ -74,5 +78,18 @@ button{
         display: none;
         visibility: hidden;
     }
+    #play{
+        visibility: visible;
+        
+    }
 }
 /* add some space between buttons */
+#play{
+    display: block;
+    margin: auto;
+    width: 100px;
+    border: 0;
+    background-color: #9CFF2E;
+    cursor: pointer;
+    display: none;
+}

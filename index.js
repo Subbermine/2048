@@ -32,6 +32,9 @@ var colour = {
   4096: "honeydew",
 };
 var turn_counter = 0;
+function play() {
+  window.location.reload();
+}
 function random_generator() {
   let randid;
   do {
@@ -368,6 +371,7 @@ function gameover() {
   document.getElementById("lbox").disabled = true;
   document.getElementById("rbox").disabled = true;
   alert("Game over");
+  document.getElementById("play").style.display = "block";
 }
 function downpossible() {
   if (isfull()) {

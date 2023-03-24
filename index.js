@@ -37,15 +37,20 @@ function play() {
 }
 function random_generator() {
   let randid;
+  let turn = 0;
   do {
     let ranrow = Math.floor(Math.random() * 4);
     let rancol = Math.floor(Math.random() * 4);
     randid = 4 * ranrow + rancol;
+    if (turn == 10) break;
+    turn++;
   } while (cell[randid] != null);
-  cell[randid] = 2;
-  document.getElementById(randid).innerHTML = 2;
-  document.getElementById(randid).style.backgroundColor = "orange";
-  document.getElementById("header").innerHTML = `Score: ${score}`;
+  if (turn != 10) {
+    cell[randid] = 2;
+    document.getElementById(randid).innerHTML = 2;
+    document.getElementById(randid).style.backgroundColor = "orange";
+    document.getElementById("header").innerHTML = `Score: ${score}`;
+  }
 }
 function move(event) {
   let key = event.key;
@@ -121,20 +126,6 @@ function down() {
         document.getElementById(id - 4).innerHTML = "";
         document.getElementById(id - 4).style.backgroundColor = "#38E54D";
         cell[id - 4] = null;
-      } else if (cell[id] == null && cell[id - 8] != null) {
-        cell[id] = cell[id - 8];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id - 8).innerHTML = "";
-        document.getElementById(id - 8).style.backgroundColor = "#38E54D";
-        cell[id - 8] = null;
-      } else if (cell[id] == null && cell[id - 12] != null) {
-        cell[id] = cell[id - 12];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id - 12).innerHTML = "";
-        document.getElementById(id - 12).style.backgroundColor = "#38E54D";
-        cell[id - 12] = null;
       }
     }
   }
@@ -194,20 +185,6 @@ function up() {
         document.getElementById(id + 4).innerHTML = "";
         document.getElementById(id + 4).style.backgroundColor = "#38E54D";
         cell[id + 4] = null;
-      } else if (cell[id] == null && cell[id + 8] != null /* && check < 1*/) {
-        cell[id] = cell[id + 8];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id + 8).innerHTML = "";
-        document.getElementById(id + 8).style.backgroundColor = "#38E54D";
-        cell[id + 8] = null;
-      } else if (cell[id] == null && cell[id + 12] != null /* && check < 2*/) {
-        cell[id] = cell[id + 12];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id + 12).innerHTML = "";
-        document.getElementById(id + 12).style.backgroundColor = "#38E54D";
-        cell[id + 12] = null;
       }
     }
   }
@@ -266,20 +243,6 @@ function left() {
         document.getElementById(id + 1).innerHTML = "";
         document.getElementById(id + 1).style.backgroundColor = "#38E54D";
         cell[id + 1] = null;
-      } else if (cell[id] == null && cell[id + 2] != null && check <= 1) {
-        cell[id] = cell[id + 2];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id + 2).innerHTML = "";
-        document.getElementById(id + 2).style.backgroundColor = "#38E54D";
-        cell[id + 2] = null;
-      } else if (cell[id] == null && cell[id + 3] != null && check < 1) {
-        cell[id] = cell[id + 3];
-        document.getElementById(id).innerHTML = cell[id];
-        document.getElementById(id).style.backgroundColor = colour[cell[id]];
-        document.getElementById(id + 3).innerHTML = "";
-        document.getElementById(id + 3).style.backgroundColor = "#38E54D";
-        cell[id + 3] = null;
       }
     }
   }
@@ -344,22 +307,6 @@ function right() {
         document.getElementById(id - 1).innerHTML = "";
         document.getElementById(id - 1).style.backgroundColor = "#38E54D";
         cell[id - 1] = null;
-      } else if (cell[id] == null && cell[id - 2] != null && check <= 1) {
-        cell[id] = cell[id - 2];
-        document.getElementById(id).innerHTML = cell[id - 2];
-        document.getElementById(id).style.backgroundColor =
-          colour[cell[id - 2]];
-        document.getElementById(id - 2).innerHTML = "";
-        document.getElementById(id - 2).style.backgroundColor = "#38E54D";
-        cell[id - 2] = null;
-      } else if (cell[id] == null && cell[id - 3] != null && check < 1) {
-        cell[id] = cell[id - 3];
-        document.getElementById(id).innerHTML = cell[id - 3];
-        document.getElementById(id).style.backgroundColor =
-          colour[cell[id - 3]];
-        document.getElementById(id - 3).innerHTML = "";
-        document.getElementById(id - 3).style.backgroundColor = "#38E54D";
-        cell[id - 3] = null;
       }
     }
   }
@@ -374,25 +321,25 @@ function gameover() {
   document.getElementById("play").style.display = "block";
 }
 function downpossible() {
-  if (isfull()) {
+  if (sidechecker()) {
     down();
     random_generator();
   } else gameover();
 }
 function leftpossible() {
-  if (isfull()) {
+  if (sidechecker()) {
     left();
     random_generator();
   } else gameover();
 }
 function rightpossible() {
-  if (isfull()) {
+  if (sidechecker()) {
     right();
     random_generator();
   } else gameover();
 }
 function uppossible() {
-  if (isfull()) {
+  if (sidechecker()) {
     up();
     random_generator();
   } else gameover();
@@ -404,7 +351,33 @@ function isfull() {
       a++;
     }
   }
-  if (a == 16) return false;
-  else return true;
+  if (a == 16) return true;
+  else return false;
 }
-// Side checker incomplete
+function sidechecker() {
+  if (
+    cell[0] != cell[1] &&
+    cell[0] != cell[4] &&
+    cell[3] != cell[2] &&
+    cell[3] != cell[7] &&
+    cell[5] != cell[1] &&
+    cell[5] != cell[4] &&
+    cell[5] != cell[6] &&
+    cell[5] != cell[9] &&
+    cell[6] != cell[2] &&
+    cell[6] != cell[7] &&
+    cell[6] != cell[10] &&
+    cell[9] != cell[8] &&
+    cell[9] != cell[10] &&
+    cell[9] != cell[13] &&
+    cell[10] != cell[11] &&
+    cell[10] != cell[14] &&
+    cell[8] != cell[12] &&
+    cell[12] != cell[13] &&
+    cell[14] != cell[15] &&
+    cell[15] != cell[1] &&
+    isfull()
+  ) {
+    return false;
+  } else return true;
+}

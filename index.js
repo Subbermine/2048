@@ -30,6 +30,7 @@ var colour = {
   1024: "magenta",
   2048: "grey",
   4096: "honeydew",
+  8192: "lime",
 };
 var turn_counter = 0;
 function play() {
